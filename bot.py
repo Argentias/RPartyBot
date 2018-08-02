@@ -11,7 +11,7 @@ from discord.ext.commands import Bot
 BOT_PREFIX = "~"
 OTHER_PREFIX = ">"
 # TOKEN = env.TOKEN
-TOKEN = os.environ['TOKEN']
+TOKEN = os.environ.get('BOT_TOKEN')
 
 botmode = "null"
 maxpartysize = 0
