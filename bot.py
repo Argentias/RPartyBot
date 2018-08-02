@@ -4,12 +4,14 @@ import aiohttp
 import json
 import discord
 import env
+import os
 from discord import Game
 from discord.ext.commands import Bot
 
 BOT_PREFIX = "~"
 OTHER_PREFIX = ">"
-TOKEN = env.TOKEN
+# TOKEN = env.TOKEN
+TOKEN = os.environ['TOKEN']
 
 botmode = "null"
 maxpartysize = 0
