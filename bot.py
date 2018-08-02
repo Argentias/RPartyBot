@@ -3,12 +3,13 @@ import asyncio
 import aiohttp
 import json
 import discord
+import bot.env
 from discord import Game
 from discord.ext.commands import Bot
 
 BOT_PREFIX = "~"
 OTHER_PREFIX = ">"
-TOKEN = "NDcyODQ4MjAxMzA1NTU0OTU1.Dj5hDA.VwNR3EChFOuemRpbVaQGH8iraho"
+TOKEN = bot.env.TOKEN
 
 botmode = "null"
 maxpartysize = 0
