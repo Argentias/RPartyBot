@@ -3,7 +3,7 @@ import asyncio
 import aiohttp
 import json
 import discord
-import env
+#import env
 import os
 from discord import Game
 from discord.ext.commands import Bot
@@ -181,13 +181,17 @@ async def status(ctx):
     global party
     await ctx.send("Sending you the status of the party now.")
     embed = discord.Embed(title="Party Status", description = "The current status of the party", color=0xff3333)
-    if botmode == "dd":
-        for p in range(0, len(party)):
-            embed.add_field(name=party[p][0]+" (ID "+str(p)+")", value=str(party[p][1])+"/"+str(party[p][2])+" HP \n"+str(party[p][3])+" death saving throw fails \n"+str(party[p][4])+" death saving throw successes", inline=False)
-    elif botmode == "rp":
-        for p in range(0, len(party)):
-            embed.add_field(name=party[p][0], value="ID "+str(p), inline=False)
-    await ctx.send(embed=embed)
+    if party != []:
+        if botmode == "dd":
+            for p in range(0, len(party)):
+                embed.add_field(name=party[p][0]+" (ID "+str(p)+")", value=str(party[p][1])+"/"+str(party[p][2])+" HP \n"+str(party[p][3])+" death saving throw fails \n"+str(party[p][4])+" death saving throw successes", inline=False)
+        elif botmode == "rp":
+            for p in range(0, len(party)):
+                embed.add_field(name=party[p][0], value="ID "+str(p), inline=False)
+        await ctx.send(embed=embed)
+    else:
+        embed.add_field(name="Empty", value="No one's here!", inline=False)
+        await ctx.send(embed=embed)
 
 @client.command(name='damage', aliases=['dmg'])
 async def damage(ctx, id, amount):
@@ -362,5 +366,5 @@ async def help(ctx):
     
     await ctx.send(embed=embed)
 
-client.loop.create_task(list_servers())
+# client.loop.create_task(list_servers())
 client.run(TOKEN)
