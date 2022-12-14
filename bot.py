@@ -19,7 +19,9 @@ maxpartysize = 0
 # DST stands for Death Saving Throw.
 party = []
 
-client = Bot(command_prefix=BOT_PREFIX)
+intents = discord.Intents.default()
+intents.message_content = True
+client = Bot(command_prefix=BOT_PREFIX, intents=intents
 
 def check_int(s):
     if s[0] in ('-', '+'):
